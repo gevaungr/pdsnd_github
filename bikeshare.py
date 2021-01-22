@@ -66,6 +66,7 @@ def time_meridiem(hour):
         meridiem = 'am'
     return meridiem
 
+
 def get_filters():
     """
     Asks user to specify a city, month, and day to analyze.
@@ -197,16 +198,16 @@ def time_stats(df):
 
     # display the most common start hour
     popular_hour = df['hour'].mode()[0]
-
-
     print('Most trips start at ', popular_hour, time_meridiem(popular_hour))
-
     print("\nThis took %s seconds." % (time.time() - start_time))
     print('-'*40)
 
 
 def station_stats(df):
-    """Displays statistics on the most popular stations and trip."""
+    """
+    Displays statistics on for the stations:
+        - Most used stations
+    """
 
     print('\nCalculating The Most Popular Stations and Trip...\n')
     start_time = time.time()
@@ -273,7 +274,7 @@ def user_stats(df):
         common_yob = df['Birth Year'].mode()[0]
         print(' Most common YOB: ', common_yob)
     except KeyError:
-            print('\nNo Gender or Birth Year info available')
+        print('\nNo Gender or Birth Year info available')
     print("\nThis took %s seconds." % (time.time() - start_time))
     print('-'*40)
 
