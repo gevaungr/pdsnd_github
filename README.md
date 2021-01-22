@@ -14,7 +14,10 @@ The program commutes a variety of descriptive statistics relating to the top 3 c
 3. Trip duration
 
 ### Files used
-Include the files used
+Motivate bikeshare data (downloaded from Udacity):
+chicago.csv
+new_york_city.csv
+washington.csv
 
 ### Credits
 It's important to give proper credit. Add links to any repo that inspired you or blogposts you consulted.
