@@ -32,7 +32,7 @@ def call_title():
 
 
 def city_check(city):
-    '''simplify checking the city so the user does not have to type city name'''
+    '''Check the city so the user does not have to type city name'''
     if city == 'c':
         return 'chicago'
     elif city == 'n':
@@ -54,6 +54,17 @@ def cal_check(frag, section):
     elif frag == 'd':
         if section in days:
             return section
+
+
+def time_meridiem(hour):
+    # TODO
+    # print 3am / 3pm
+    if hour > 12:
+        hour -= 12
+        meridiem = 'pm'
+    else:
+        meridiem = 'am'
+    return meridiem
 
 
 def get_filters():
@@ -187,22 +198,16 @@ def time_stats(df):
 
     # display the most common start hour
     popular_hour = df['hour'].mode()[0]
-
-    # TODO
-    # print 3am / 3pm
-    if popular_hour > 12:
-        popular_hour -= 12
-        i = 'pm'
-    else:
-        i = 'am'
-    print('Most trips start at ', popular_hour, i)
-
+    print('Most trips start at ', popular_hour, time_meridiem(popular_hour))
     print("\nThis took %s seconds." % (time.time() - start_time))
     print('-'*40)
 
 
 def station_stats(df):
-    """Displays statistics on the most popular stations and trip."""
+    """
+    Displays statistics on for the stations:
+        - Most used stations
+    """
 
     print('\nCalculating The Most Popular Stations and Trip...\n')
     start_time = time.time()
@@ -269,7 +274,7 @@ def user_stats(df):
         common_yob = df['Birth Year'].mode()[0]
         print(' Most common YOB: ', common_yob)
     except KeyError:
-            print('\nNo Gender or Birth Year info available')
+        print('\nNo Gender or Birth Year info available')
     print("\nThis took %s seconds." % (time.time() - start_time))
     print('-'*40)
 
